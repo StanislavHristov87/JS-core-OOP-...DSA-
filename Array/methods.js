@@ -37,19 +37,19 @@
 
 // console.log(array);
 
-const array = [1, 4, 2, 3,4, 6, 1, 8, 11];
-let newArr = [];
-let newArr2 = [];
+// const array = [1, 4, 2, 3,4, 6, 1, 8, 11];
+// let newArr = [];
+// let newArr2 = [];
 
-const result = array.every((element) => {
-    // Add your condition here
-    if (element > 3) {
-        return newArr.push(element);
-    }
-    // Return true or false based on the condition
-    return newArr2.push(element);
-});
+// const result = array.every((element) => {
+//     // Add your condition here
+//     if (element > 3) {
+//         return newArr.push(element);
+//     }
+//     // Return true or false based on the condition
+//     return newArr2.push(element);
+// });
 
-console.log(result);
-console.log(newArr);
-console.log(newArr2);
+// console.log(result);
+// console.log(newArr);
+// console.log(newArr2);
