@@ -1,5 +1,7 @@
 // ***FILTER***
 
+const { number } = require("prop-types");
+
 // let numbers = [1, 2, 3, 4, 8, 9, 10, 11, 12, 13, 14, 15];
 
 // const evens = numbers.filter((num) => num % 2 === 0);
@@ -77,10 +79,10 @@
 // Double each number in an array of numbers.
 // Example: [1,2,3,4] -> [2,4,6,8]
 
-let numbers = [1, 2, 3, 4];
+// let numbers = [1, 2, 3, 4];
 
-const doubled = numbers.map((n) => n * 2);
-console.log(doubled);
+// const doubled = numbers.map((n) => n * 2);
+// console.log(doubled);
 
 // Uppercase each string in an array of strings.
 // Example: ['cat', 'dog'] -> ['CAT', 'DOG']
@@ -114,19 +116,19 @@ console.log(doubled);
 
 
 
-const books = [
- {title: '1984', author: 'George Orwell', pages: 328},
- {title: 'Fahrenheit 451', author: 'Ray Bradbury', pages: 256},
- {title: 'Brave New World', author: 'Aldous Huxley', pages: 311},
- {title: 'The Handmaid\'s Tale', author: 'Margaret Atwood', pages: 311},
-];
+// const books = [
+//  {title: '1984', author: 'George Orwell', pages: 328},
+//  {title: 'Fahrenheit 451', author: 'Ray Bradbury', pages: 256},
+//  {title: 'Brave New World', author: 'Aldous Huxley', pages: 311},
+//  {title: 'The Handmaid\'s Tale', author: 'Margaret Atwood', pages: 311},
+// ];
 
-const getBookInfo = (book) => {
-   const result = book.map((b) => b.title + ', ' + b.author + ', ' + b.pages);
-   return result;
-}
- const output = getBookInfo(books);
- console.log(output);
+// const getBookInfo = (book) => {
+//    const result = book.map((b) => b.title + ', ' + b.author + ', ' + b.pages);
+//    return result;
+// }
+//  const output = getBookInfo(books);
+//  console.log(output);
  
 // // example result
 // /*
@@ -139,10 +141,40 @@ const getBookInfo = (book) => {
 // */
 // Map each user in a collection to an HTML template. The HTML template should look like the example below. The three placeholders should give you an idea what information the user object should hold.
 
-// <div>
-//   <h3>{firstName} {lastName}</h3>
-//   <em>Member since {registeredDate}.</em>
-// </div>
+let users = [{firstName: 'Pesho', lastName: 'Ivanov', registeredDate: '13.03.2020'}, 
+{firstName: 'Gosho', lastName: 'Ivanov', registeredDate: '10.11.1989'}, 
+{firstName: 'Penka', lastName: 'Ivanova', registeredDate: '01.01.2000'}];
+
+const generateUserView = ({firstName, lastName, registeredDate}) => {
+    return (
+    `<div>
+      <h3>${firstName} ${lastName}</h3>
+      <em>Member since ${registeredDate}.</em>
+    </div>`);
+  }
+   
+  const userViews = users.map(generateUserView);
+  console.log('\nTask6:');
+  console.log(userViews);
+
+// const toHTML = (users) =>  {
+//  const result = users.map((user) => {
+//     return ` <div>
+//   <h3> ${user.firstName} ${user.lastName}</h3>
+//   <em>Member since ${user.registeredDate}.</em>
+// </div>`
+//     }) 
+//     return result;
+// }
+//    const result1 = toHTML(users);
+//     console.log(result1);
+
+
+
+/* <div>
+  <h3>{firstName} {lastName}</h3>
+  <em>Member since {registeredDate}.</em>
+</div> */
 // // Example result
 // /*
 // [
@@ -160,3 +192,112 @@ const getBookInfo = (book) => {
 //     '  </div>'
 // ]    
 //  */
+
+// *** REDUCE ***
+
+// 1. Return the product of an array of numbers.
+// Example: `[1,2,3,4,5]` -> `120`
+
+
+//  const nums1 = [1, 2, 3, 4, 5];
+//  const product = nums1.reduce((prod, n) => prod * n);
+
+
+// console.log(product);
+
+// 2. Return the maximum number in an array of numbers. Hint: with reduce you can also replace the result of the previous iteration.
+// Example: `[7, 13, 72, 14]` -> `72`
+
+//  const nums2 = [7, 13, 72, 14];
+//  const maxNum = nums2.reduce((max, powerTo) => {
+//     if (powerTo > max) {
+//         return powerTo;
+//     } else {
+//         return max;
+//     }
+//  })
+//     console.log(maxNum);
+
+
+// 3. Return the longest string in an array of strings.
+// Example: `['cat', 'dog', 'elephant', 'cucumber']` -> `elephant`  
+    // const strings3 = ['cat', 'dog', 'elephant', 'cucumber'];
+    // const longest = strings3.reduce((long, s) => s.length > long.length ? s : long);
+
+    // console.log(longest);
+
+
+
+// 4. Reverse a string. Hint: A string is just an array of characters. 
+//To use reduce on a string, you can spread it an array like this: [...'apple'].reduce(...
+// Example: `apple` -> `elppa`
+// const string4 = 'apple';
+// // const reversed = [...string4].reduce((acc, char) => [char, ...acc], []).join('');
+// const appleArray = [...string4];
+// console.log(appleArray);
+// const reversed = appleArray.reduce((accumulator, character) => {
+//   const what = [character, ...accumulator]
+  
+//     return what;
+// },[])
+ 
+
+// console.log(reversed); // elppa
+
+
+// 5. Implement filter by using reduce.
+ 
+ 
+// const reduceFilter = (array = [], filterFn) => {
+//   const result = array.reduce((acc, el, index, arr) => {
+//     if(filterFn(el, index, arr)) {
+//       acc.push(el);
+//     }
+ 
+//     return acc;
+//   }, []);
+ 
+//   return result;
+// };
+// const numbers = [1, 15, 2, 8, 31, 5, 9];
+// const filter = (numbers) => {
+//     return numbers.reduce((acc, num) => {
+//         if(num < 5 || num > 15) {
+//             acc.push(num);
+//         }
+//         return acc;
+//     },[]);
+// }
+
+// console.log(filter(numbers));
+ 
+//   console.log('\nTask5:');
+//   console.log(reduceFilter(nums5, (num) => (num > 5 && num < 15))); // [ 8, 9 ]
+
+
+// 6. Implement map by using reduce.
+// const nums3 = [1, 2, 3, 4];
+
+// const map = (nums3) => {
+//     return nums3.reduce((acc, num) => {
+//         let doubled = num * 2;
+//         acc.push(doubled);
+//         return acc;
+//     },[]);
+// };
+
+// console.log(map(nums3));
+
+
+// const reduceMap = (array = [], mapFn) => {
+//   const result = array.reduce((acc, el, index, arr) => {
+//     acc.push(mapFn(el, index, arr)); // acc.push(el * 2)
+ 
+//     return acc;
+//   }, []);
+ 
+//   return result;
+// };
+ 
+// console.log('\nTask6:');
+// console.log(reduceMap([1, 2, 3, 4], x => x * 2)); // [ 2, 4, 6, 8 ]
