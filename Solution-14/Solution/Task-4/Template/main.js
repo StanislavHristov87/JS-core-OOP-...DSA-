@@ -430,7 +430,7 @@ const getCitiesByPopulation = (employees, cityCount) => {
        }, {})
   
 const arrCities = Object.entries(result)
-.sort((a, b) => b. - a.population)
+.sort((a, b) => b.population - a.population)
 
 console.log(arrCities);
        return result

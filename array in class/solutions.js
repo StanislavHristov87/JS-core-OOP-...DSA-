@@ -22,7 +22,6 @@
 // let colRow = 4;
 // let arr = [];
 
-
 // for(let i = 0; i < colRow; i++) {
 //     let counter = 1;
 //     arr[i] = [];
@@ -37,4 +36,30 @@
 // }}
 // console.log(arr);
 
-
+const data = [
+  {
+    name: "John",
+    age: 20,
+    street: "Main",
+    usable: ["name", "age"],
+  },
+  {
+    first: 10,
+    second: 12,
+    third: 16,
+    usable: ["first", "second"],
+  },
+];
+const transfObj = (data) => {
+  // your code starts here
+  const transformedObject = {};
+  const result = [];
+  data.filter((obj) => {
+    obj.usable.map((usbleEl) => Object.assign(transformedObject, usbleEl));
+    result.push(transformedObject);
+  })
+  return result
+// your code ends here
+}
+const result1 = transfObj(data);
+console.log(result1);
